@@ -15,6 +15,11 @@ public class Calculator implements ActionListener {
     JPanel panel2 = new JPanel();
     JLabel label = new JLabel();
     JButton btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,eql,sum,sub,mul,div,pwr,dec,mod,clr,del;
+
+    double num1=0,num2=0,result =0; 
+    char operator ;
+
+
     Calculator(){
 
         
@@ -36,7 +41,7 @@ public class Calculator implements ActionListener {
 
     label.setBounds(0, 0, 250, 75);
     label.setFont(new Font("Arial", Font.PLAIN, 30));
-    label.setText("This is a test text");
+    // label.setText("This is a test text");
 //---------------------------------------------------------------------
 
         btn0 = new JButton();
@@ -174,47 +179,65 @@ public class Calculator implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if ( e.getSource() == btn0){
-            System.out.println(btn0.getText());}
-        else if  ( e.getSource() == btn1)
+            System.out.println(btn0.getText());
+            label.setText(label.getText()+ btn0.getText());}
+        else if  ( e.getSource() == btn1){
             System.out.println(btn1.getText());
-        else if  ( e.getSource() == btn1)
-            System.out.println(btn1.getText());
-        else if  ( e.getSource() == btn2)
+            label.setText(label.getText()+ btn1.getText());}
+        else if  ( e.getSource() == btn2){
             System.out.println(btn2.getText());
-        else if  ( e.getSource() == btn3)
+            label.setText(label.getText()+ btn2.getText());}
+        else if  ( e.getSource() == btn3){
             System.out.println(btn3.getText());
-        else if  ( e.getSource() == btn4)
+            label.setText(label.getText()+ btn3.getText());}
+        else if  ( e.getSource() == btn4){
             System.out.println(btn4.getText());
-        else if  ( e.getSource() == btn5)
+            label.setText(label.getText()+ btn4.getText());}
+        else if  ( e.getSource() == btn5){
             System.out.println(btn5.getText());
-        else if  ( e.getSource() == btn6)
+            label.setText(label.getText()+ btn5.getText());}
+        else if  ( e.getSource() == btn6){
             System.out.println(btn6.getText());
-        else if  ( e.getSource() == btn7)
+            label.setText(label.getText()+ btn6.getText());}
+        else if  ( e.getSource() == btn7){
             System.out.println(btn7.getText());
-        else if  ( e.getSource() == btn8)
+            label.setText(label.getText()+ btn7.getText());}
+        else if  ( e.getSource() == btn8){
             System.out.println(btn8.getText());
-        else if  ( e.getSource() == btn9)
+            label.setText(label.getText()+ btn8.getText());}
+        else if  ( e.getSource() == btn9){
             System.out.println(btn9.getText());
-        else if  ( e.getSource() == sum)
+            label.setText(label.getText()+ btn9.getText());}
+        else if  ( e.getSource() == sum){
             System.out.println(sum.getText());
-        else if  ( e.getSource() == sub)
+            label.setText(label.getText()+ sum.getText());}
+        else if  ( e.getSource() == sub){
             System.out.println(sub.getText());
-        else if  ( e.getSource() == mul)
+            label.setText(label.getText()+ sub.getText());}
+        else if  ( e.getSource() == mul){
             System.out.println(mul.getText());
-        else if  ( e.getSource() == div)
+            label.setText(label.getText()+ mul.getText());}
+        else if  ( e.getSource() == div){
             System.out.println(div.getText());
-        else if  ( e.getSource() == pwr)
+            label.setText(label.getText()+ div.getText());}
+        else if  ( e.getSource() == pwr){
             System.out.println(pwr.getText());
-        else if  ( e.getSource() == dec)
+            label.setText(label.getText()+ pwr.getText());}
+        else if  ( e.getSource() == dec){
             System.out.println(dec.getText());
-        else if  ( e.getSource() == del)
+            label.setText(label.getText()+ dec.getText());}
+        else if  ( e.getSource() == del){
             System.out.println(del.getText());
-        else if  ( e.getSource() == clr)
+            label.setText(label.getText().substring(0, label.getText().length()-1));}
+        else if  ( e.getSource() == clr){
             System.out.println(clr.getText());
-        else if  ( e.getSource() == mod)
+            label.setText("");}
+        else if  ( e.getSource() == mod){
             System.out.println(mod.getText());
-        else if  ( e.getSource() == eql)
+            label.setText(label.getText()+ mod.getText());}
+        else if  ( e.getSource() == eql){
             System.out.println(eql.getText());
+            label.setText(result+"");}
     }
     
     
