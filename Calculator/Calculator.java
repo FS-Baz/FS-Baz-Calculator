@@ -17,7 +17,7 @@ public class Calculator implements ActionListener {
     JButton btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,eql,sum,sub,mul,div,pwr,dec,mod,clr,del;
 
     double num1=0,num2=0,result =0; 
-    char operator ;
+    String[] operator = {"÷","×","+","-"} ;
 
 
     Calculator(){
@@ -180,7 +180,8 @@ public class Calculator implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if ( e.getSource() == btn0){
             System.out.println(btn0.getText());
-            label.setText(label.getText()+ btn0.getText());}
+            if (label.getText().length()>0)
+                label.setText(label.getText()+ btn0.getText());}
         else if  ( e.getSource() == btn1){
             System.out.println(btn1.getText());
             label.setText(label.getText()+ btn1.getText());}
@@ -210,15 +211,19 @@ public class Calculator implements ActionListener {
             label.setText(label.getText()+ btn9.getText());}
         else if  ( e.getSource() == sum){
             System.out.println(sum.getText());
+            if (checkOp())
             label.setText(label.getText()+ sum.getText());}
         else if  ( e.getSource() == sub){
             System.out.println(sub.getText());
+            if (checkOp())
             label.setText(label.getText()+ sub.getText());}
         else if  ( e.getSource() == mul){
             System.out.println(mul.getText());
+            if (checkOp())
             label.setText(label.getText()+ mul.getText());}
         else if  ( e.getSource() == div){
             System.out.println(div.getText());
+            if (checkOp())
             label.setText(label.getText()+ div.getText());}
         else if  ( e.getSource() == pwr){
             System.out.println(pwr.getText());
@@ -228,7 +233,8 @@ public class Calculator implements ActionListener {
             label.setText(label.getText()+ dec.getText());}
         else if  ( e.getSource() == del){
             System.out.println(del.getText());
-            label.setText(label.getText().substring(0, label.getText().length()-1));}
+                if (label.getText().length()>0)
+                    label.setText(label.getText().substring(0, label.getText().length()-1));}
         else if  ( e.getSource() == clr){
             System.out.println(clr.getText());
             label.setText("");}
@@ -241,6 +247,17 @@ public class Calculator implements ActionListener {
     }
     
     
+
+    private boolean checkOp(){
+        String lastOP = label.getText().substring(label.getText().length()-1);
+        for (int i =0; i< operator.length;i++)
+            if (operator[i].equalsIgnoreCase(lastOP) || this.label.getText().isEmpty()){
+                return false;}
+        
+        return true;
+    }
+
+
 
 
     public static void main(String[] args) {
