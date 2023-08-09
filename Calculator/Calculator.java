@@ -18,7 +18,8 @@ public class Calculator implements ActionListener {
 
     double num1=0,num2=0,result =0; 
     String[] operator = {"÷","×","+","-"} ;
-
+    String op;
+ 
 
     Calculator(){
 
@@ -29,6 +30,7 @@ public class Calculator implements ActionListener {
         frame.setSize(317, 500);
         frame.setResizable(false);
         frame.setBackground(new Color(0xFFFFFF));
+        frame.setTitle("Calculator");
         
 //---------------------------------------------------------------------
         panel2.setLayout(null);
@@ -49,101 +51,121 @@ public class Calculator implements ActionListener {
         btn0.setFont(new Font("Arial", Font.PLAIN, 40));
         btn0.setText("0");
         btn0.addActionListener(this);
+        btn0.setFocusable(false);
         btn1 = new JButton();
         btn1.setBounds(0, 235, 75, 75);
         btn1.setFont(new Font("Arial", Font.PLAIN, 40));
         btn1.setText("1");
         btn1.addActionListener(this);
+        btn1.setFocusable(false);
         btn2 = new JButton();
         btn2.setFont(new Font("Arial", Font.PLAIN, 40));
         btn2.setText("2");
         btn2.setBounds(75, 235, 75, 75);
         btn2.addActionListener(this);
+        btn2.setFocusable(false);
         btn3 = new JButton();
         btn3.setBounds(150, 235, 75, 75);
         btn3.setFont(new Font("Arial", Font.PLAIN, 40));
         btn3.setText("3");
         btn3.addActionListener(this);
+        btn3.setFocusable(false);
         btn4 = new JButton();
         btn4.setBounds(0, 160, 75, 75);
         btn4.setFont(new Font("Arial", Font.PLAIN, 40));
         btn4.setText("4");
         btn4.addActionListener(this);
+        btn4.setFocusable(false);
         btn5 = new JButton();
         btn5.setBounds(75, 160, 75, 75);
         btn5.setFont(new Font("Arial", Font.PLAIN, 40));
         btn5.setText("5");
         btn5.addActionListener(this);
+        btn5.setFocusable(false);
         btn6 = new JButton();
         btn6.setBounds(150, 160, 75, 75);
         btn6.setFont(new Font("Arial", Font.PLAIN, 40));
         btn6.setText("6");
         btn6.addActionListener(this);
+        btn6.setFocusable(false);
         btn7 = new JButton();
         btn7.setBounds(0, 85, 75, 75);
         btn7.setFont(new Font("Arial", Font.PLAIN, 40));
         btn7.setText("7");
         btn7.addActionListener(this);
+        btn7.setFocusable(false);
         btn8 = new JButton();
         btn8.setBounds(75, 85, 75, 75);
         btn8.setFont(new Font("Arial", Font.PLAIN, 40));
         btn8.setText("8");
         btn8.addActionListener(this);
+        btn8.setFocusable(false);
         btn9 = new JButton();
         btn9.setBounds(150, 85, 75, 75);
         btn9.setFont(new Font("Arial", Font.PLAIN, 40));
         btn9.setText("9");
         btn9.addActionListener(this);
+        btn9.setFocusable(false);
         dec = new JButton();
         dec.setBounds(150, 310, 75, 75);
         dec.setFont(new Font("Arial", Font.PLAIN, 40));
         dec.setText(".");
         dec.addActionListener(this);
+        dec.setFocusable(false);
         eql = new JButton();
         eql.setBounds(225, 310, 75, 75);
         eql.setFont(new Font("Arial", Font.PLAIN, 40));
         eql.setText("=");
         eql.addActionListener(this);
+        eql.setFocusable(false);
         sum = new JButton();
         sum.setBounds(225, 235, 75, 75);
         sum.setFont(new Font("Arial", Font.PLAIN, 40));
         sum.setText("+");
         sum.addActionListener(this);
+        sum.setFocusable(false);
         sub = new JButton();
         sub.setBounds(225, 160, 75, 75);
         sub.setFont(new Font("Arial", Font.PLAIN, 40));
         sub.setText("-");
         sub.addActionListener(this);
+        sub.setFocusable(false);
         mul = new JButton();
         mul.setBounds(225, 85, 75, 75);
         mul.setFont(new Font("Arial", Font.PLAIN, 40));
         mul.setText("×");
         mul.addActionListener(this);
+        mul.setFocusable(false);
         mod = new JButton();
         mod.setBounds(0, 310, 75, 75);
         mod.setFont(new Font("Arial", Font.PLAIN, 21));
         mod.setText("mod");
         mod.addActionListener(this);
+        mod.setFocusable(false);
         div = new JButton();
         div.setBounds(225, 10, 75, 75);
         div.setFont(new Font("Arial", Font.PLAIN, 40));
         div.setText("÷");
         div.addActionListener(this);
+        div.setFocusable(false);
         pwr = new JButton();
         pwr.setBounds(150, 10, 75, 75);
         pwr.setFont(new Font("Arial", Font.PLAIN, 40));
         pwr.setText("^");
         pwr.addActionListener(this);
+        pwr.setFocusable(false);
         del = new JButton();
         del.setBounds(75, 10, 75, 75);
         del.setFont(new Font("Arial", Font.PLAIN, 30));
         del.setText("del");
         del.addActionListener(this);
+        del.setFocusable(false);
         clr = new JButton();
         clr.setBounds(0, 10, 75, 75);
         clr.setFont(new Font("Arial", Font.PLAIN, 40));
         clr.setText("C");
         clr.addActionListener(this);
+        clr.setFocusable(false);
 
 //---------------------------------------------------------------------
 
@@ -211,20 +233,28 @@ public class Calculator implements ActionListener {
             label.setText(label.getText()+ btn9.getText());}
         else if  ( e.getSource() == sum){
             System.out.println(sum.getText());
+            num1 = Double.parseDouble(label.getText());
+            op ="+";
             if (checkOp())
-            label.setText(label.getText()+ sum.getText());}
+            label.setText("");}
         else if  ( e.getSource() == sub){
             System.out.println(sub.getText());
+            num1 = Double.parseDouble(label.getText());
+            op = "-";
             if (checkOp())
-            label.setText(label.getText()+ sub.getText());}
+            label.setText("");}
         else if  ( e.getSource() == mul){
             System.out.println(mul.getText());
+            num1 = Double.parseDouble(label.getText());
+            op ="*";
             if (checkOp())
-            label.setText(label.getText()+ mul.getText());}
+            label.setText("");}
         else if  ( e.getSource() == div){
             System.out.println(div.getText());
+            num1 = Double.parseDouble(label.getText());
+            op ="/";
             if (checkOp())
-            label.setText(label.getText()+ div.getText());}
+            label.setText("");}
         else if  ( e.getSource() == pwr){
             System.out.println(pwr.getText());
             label.setText(label.getText()+ pwr.getText());}
@@ -242,7 +272,27 @@ public class Calculator implements ActionListener {
             System.out.println(mod.getText());
             label.setText(label.getText()+ mod.getText());}
         else if  ( e.getSource() == eql){
+            num2 = Double.parseDouble(label.getText());
             System.out.println(eql.getText());
+            switch (op) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "*":
+                    result = num1 * num2;
+                    break;
+                case "/":
+                    result = num1 / num2;
+                    break;
+                
+                default:
+
+                    break;
+            }
+            num1 = result;
             label.setText(result+"");}
     }
     
