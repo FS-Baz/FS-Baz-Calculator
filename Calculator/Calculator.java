@@ -257,7 +257,10 @@ public class Calculator implements ActionListener {
             label.setText("");}
         else if  ( e.getSource() == pwr){
             System.out.println(pwr.getText());
-            label.setText(label.getText()+ pwr.getText());}
+            op = "^";
+            num1 = Double.parseDouble(label.getText());
+            if (checkOp())
+            label.setText(num1*num1+"");}
         else if  ( e.getSource() == dec){
             System.out.println(dec.getText());
             label.setText(label.getText()+ dec.getText());}
@@ -287,7 +290,7 @@ public class Calculator implements ActionListener {
                 case "/":
                     result = num1 / num2;
                     break;
-                
+              
                 default:
 
                     break;
